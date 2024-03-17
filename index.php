@@ -19,17 +19,17 @@
         input[type="checkbox"] { 
             transform: scale(1.2); 
         }
-    </style> 
+    </style>
 </head>
 <body>
-    <div class="container col-6 pt-3">
+    <div class="container col pt-3">
         <div class="container mt-3">
             <div class="card shadow">
                 <div class="card-body">
                     <div class="row">
                         <h5 class="text-center mb-3">Customize your password</h5>
                     </div>
-                    <form action="" method="post">
+                    <form id="password-form" action="" method="post">
                         <div class="row">
                             <div class="col">
                                 <div class="card shadow-sm">
@@ -42,7 +42,7 @@
                                                             <div class="col">
                                                                 <div class="form-group mb-3">
                                                                     <label class="form-label" for="length">Password Length: <span id="lengthValue"><?php echo isset($_POST['length']) ? $_POST['length'] : '12'; ?></span></label>
-                                                                    <input class="form-range h-75 p-3" type="range" id="length" name="length" min="4" max="32" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '12'; ?>" oninput="document.getElementById('lengthValue').textContent = this.value;">
+                                                                    <input class="form-range h-75 p-3" type="range" id="length" name="length" min="4" max="32" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '12'; ?>" oninput="updateLengthValue(this.value)">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -87,7 +87,7 @@
                             <div class="col-md-8">
                                 <div class="card shadow-sm rounded-pill">
                                     <div class="card-body bg-success text-white rounded-pill">
-                                        <div class="text-center">
+                                        <div class="text-center" id="newPassword">
                                             <?php
                                                 $password = getPassword();
                                                 echo $password
@@ -100,7 +100,7 @@
                         </div>
                         <div class="row mt-3">
                             <div class="text-center">
-                                <button class="btn btn-primary me-md-2" type="button" name="copy" onclick="copyToClipboard('<?php echo $password ?>')">
+                                <button class="btn btn-primary me-md-2 mt-2" type="button" name="copy" onclick="copyToClipboard('<?php echo $password ?>')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
                                         <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
@@ -108,7 +108,7 @@
                                     </svg>
                                     Copy Password
                                 </button>
-                                <button class="btn btn-primary ms-md-2" type="submit" name="generate">
+                                <button class="btn btn-primary ms-md-2 mt-2" type="submit" name="generate">
                                     Generate Password
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
@@ -183,6 +183,10 @@
     ?>
 
     <script>
+        function updateLengthValue(value) {
+            document.getElementById('lengthValue').textContent = value;
+        }
+    
         async function copyToClipboard(password) {
            	try {
         		await navigator.clipboard.writeText(password);
