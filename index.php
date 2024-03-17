@@ -36,44 +36,28 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="card shadow-sm">
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <div class="form-group mb-3">
-                                                                    <label class="form-label" for="length">Password Length: <span id="lengthValue"><?php echo isset($_POST['length']) ? $_POST['length'] : '12'; ?></span></label>
-                                                                    <input class="form-range h-75 p-3" type="range" id="length" name="length" min="4" max="32" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '12'; ?>" oninput="updateLengthValue(this.value)">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="form-group mb-3">
+                                                    <label class="form-label" for="length">Password Length: <span id="lengthValue"><?php echo isset($_POST['length']) ? $_POST['length'] : '12'; ?></span></label>
+                                                    <input class="form-range h-75 p-3" type="range" id="length" name="length" min="4" max="32" value="<?php echo isset($_POST['length']) ? $_POST['length'] : '12'; ?>" oninput="updateLengthValue(this.value)">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group mb-3">
-                                                    <div class="card shadow-sm">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" id="uppercase" name="uppercase" <?php echo allUnchecked() ? 'checked' : (isset($_POST['uppercase']) ? 'checked' : ''); ?>>
-                                                                        <label class="form-check-label" for="uppercase">Include Uppercase Letters</label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" id="lowercase" name="lowercase" <?php echo allUnchecked() ? 'checked' : (isset($_POST['lowercase']) ? 'checked' : ''); ?>>
-                                                                        <label class="form-check-label" for="lowercase">Include Lowercase Letters</label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" id="numbers" name="numbers" <?php echo allUnchecked() ? 'checked' : (isset($_POST['numbers']) ? 'checked' : ''); ?>>
-                                                                        <label class="form-check-label" for="numbers">Include Numbers</label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" id="symbols" name="symbols" <?php echo allUnchecked() ? 'checked' : (isset($_POST['symbols']) ? 'checked' : ''); ?>>
-                                                                        <label class="form-check-label" for="symbols">Include Symbols</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="uppercase" name="uppercase" <?php echo allUnchecked() ? 'checked' : (isset($_POST['uppercase']) ? 'checked' : ''); ?>>
+                                                        <label class="form-check-label" for="uppercase">Include Uppercase Letters</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="lowercase" name="lowercase" <?php echo allUnchecked() ? 'checked' : (isset($_POST['lowercase']) ? 'checked' : ''); ?>>
+                                                        <label class="form-check-label" for="lowercase">Include Lowercase Letters</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="numbers" name="numbers" <?php echo allUnchecked() ? 'checked' : (isset($_POST['numbers']) ? 'checked' : ''); ?>>
+                                                        <label class="form-check-label" for="numbers">Include Numbers</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" id="symbols" name="symbols" <?php echo allUnchecked() ? 'checked' : (isset($_POST['symbols']) ? 'checked' : ''); ?>>
+                                                        <label class="form-check-label" for="symbols">Include Symbols</label>
                                                     </div>
                                                 </div>
                                             </div>
